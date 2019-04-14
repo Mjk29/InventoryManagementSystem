@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
+
+    <!--stylesheets-->
+    <link rel="stylesheet" type="text/css" href="./assets/css/index.css">
+
+    <!--title-->
+    <title>COAD Electronics Lab</title>
+</head>
+
+
+<body onload="generateInitJSON();">
+
+    <!--Top Navbar-->
+    <header class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">CoAD Electronics Shop</a>
+            <ul class="navbar-right">
+                <li>
+                    <i id="admin-login-icon" class="fas fa-sign-in-alt"><a> Log in </a></i>
+                    <i id="view-cart-icon" class="fas fa-shopping-cart"><a> View cart  </a><span id='cart-size'></span></i>
+                </li>
+
+            </ul>
+        </div>
+    </header>
+
+    <!--Login modal-->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <div class="modalBoxTop">TA LOGIN</div>
+            <div class="modal-body" >
+                USERNAME : <input id="uname" type="text"><br>
+                PASSWORD : <input id="plainText" type="password" onKeyDown="if(event.keyCode==13) login();"><br><br>
+                <button onclick="closeLoginModal()" id="exit-modal">Cancel</button>
+                <button id="login-button" onclick="login()">LOGIN</button>
+                <div id="returnText"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--Cart Modal-->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content" id="cart-modal-content">
+            <div class="modalBoxTop">Review Order</div>
+                <div class="header row">
+                    <div class="col-3 underline">Item</div>
+                    <div class="col-3 underline">Price</div>
+                    <div class="col-3 underline">Quantity</div>
+                    <div class="col-3 underline">Total</div>
+                </div>
+                
+            <div class="modal-body" id="cart-modal-body">
+                <!--Is populated by javascript-->
+            </div>
+
+            <!--Subtotal-->
+            <div class="row subtotal">
+                <div class="col-3">
+                    <input type="text" placeholder="Enter 8 digit student ID" data-toggle="popover" data-trigger="focus" data-content="Incorrect Student ID">
+                    <input type="email" id="emailAddr" placeholder="Enter email address"></input>
+                </div>
+                <div class="col-6"></div>
+                <div class="col-3">
+                    <p>Subtotal: $<span id="subtotal"> </span></p>
+                </div>
+            </div>
+
+            <!--Submit and cancel buttons-->
+            <div class="row btn-margin">
+                <div class="col-3">
+                    <button onclick="closeCartModal()" id="exit-modal" class="btn btn-outline-secondary">Return to shopping</button>
+                </div>
+                <div class="col-6"></div>
+                <div class="col-3">
+                    <button on="submit-order" onclick="sendTransaction()" class="btn btn-outline-secondary"  data-toggle="popover" data-trigger="focus" title="Submitted sucessfully" data-content="click to dismiss">Proceed to payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--TODO View cart modal-->
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <div class="col-12 col-md-3 col-xl-2 nopadding">
+
+                <!--Searchbar-->
+                <form>
+                    <div class="active-orange-4">
+                        <input onKeyDown="if(event.keyCode==13){event.preventDefault(); searchForItems()};" id="searchBar" class="form-control" type="text" placeholder="Search  Enter ?help for help" aria-label="Search">
+                    </div>
+
+                </form>
+
+
+                <!--Navigation menu-->
+                <nav>
+
+                    <label class="nav-split">Filters
+                    </label>
+
+                    <label class="checkbox-container">Integrated Chips
+                        <input type="checkbox" id="Integrated Chip">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="checkbox-container">DC Motors
+                        <input type="checkbox" id="DC Motors">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="checkbox-container">Solder
+                        <input type="checkbox" id="Soldering">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="checkbox-container">Potentiometer
+                        <input type="checkbox" id="Potentiometer">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="checkbox-container">Vibration
+                        <input type="checkbox" id="Vibration">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Sensor
+                        <input type="checkbox" id="Sensing">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Actuator
+                        <input type="checkbox" id="Actuator">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Micro Controller
+                        <input type="checkbox" id="MicroController">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Camera
+                        <input type="checkbox" id="Camera">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Servo
+                        <input type="checkbox" id="Servo">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="checkbox-container">Tools
+                        <input type="checkbox" id="Tools">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Consumables
+                        <input type="checkbox" id="Consumable">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="nav-split">Actions </label>
+                    <label onclick="qrScanner()" class="admin-actions"> QR Scanner
+                    <i class="fas fa-camera"></i>
+                    </label>
+
+
+                    <!--Power supply-->
+
+                </nav>
+
+            </div>
+
+            <!--Item list-->
+            <main class="col-12 col-md-9 col-xl-10" id="body">
+            </main>
+        </div>
+    </div>
+
+
+<div id="helpModal" class="modal">
+        <div class="modal-content">
+            <div class="modalBoxTop">Search Help</div>
+            <div class="modal-body" >
+            <div id="helpModalText">&nbsp </div>
+            <div id="returnText"></div>
+            </div>
+        </div>
+    </div>
+
+      <div id="scannerModal" class="modal" >
+            <div style="width: 500px" class="modal-content" >
+               <div class="modalBoxTop">QR SCANNER</div>
+                 
+                  <select id="cameraSelect"></select>
+
+               <div class="modal-body" >
+                  <div id="app">
+                     <div class="preview-container">
+                        <video  height="320" id="preview"></video>
+                     </div>
+                  </div>
+                  <div >
+                  <img align="left" height="150" width="150" 
+                  id="scannerResultImage" style="visibility: hidden">&nbsp</img>
+                  <div align="center" >
+                     <span id="scannerResultName">&nbsp</span><br>
+                     <span id="scannerResultPrice">&nbsp</span><br>
+                     <span id="scannerResultAvailibility">&nbsp</span><br>
+                     <span id="scannerResultLocation">&nbsp</span>
+                  </div>
+                 </div>
+               </div>
+                <button onclick="addQRtoCart()" id="scannerAddButton" style="display:none" >Add item to cart</button>
+                
+            </div>
+         </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="./assets/js/index.js"></script>
+    <link rel="stylesheet" href="./assets/css/qrStyle.css">
+          <script type="text/javascript" src="./assets/js/instascan.min.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,441 @@
+/* ===== Base ===== */
+
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #434343;
+    background: #DAE3E7;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+/* https://www.w3schools.com/howto/howto_css_clearfix.asp */
+/*
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+*/
+
+.clearfix {
+    overflow: auto;
+}
+
+.imgtoleft{
+    float: left;
+}
+
+.paddingtop {
+    padding-top: 15px;
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.big-text {
+    font-size: 24px;
+}
+
+.noscroll {
+    overflow: hidden;
+}
+
+/* ===== Header / Navbar =====*/
+.navbar{
+    background-image: linear-gradient(to left, #d11717, #e00e1f 35%, #dd152d 51%, #750d42);
+    color:white;
+}
+
+
+.navbar a{
+    color:white;
+    font-weight: 300 !important;
+}
+
+.navbar ul{
+    margin-top: 15px;
+    margin-right: 15px;
+    list-style: none; /* removes bullet */
+}
+
+.navbar .search-row {
+    margin-top: 15px;
+} 
+
+.navbar-brand{
+    display: block;
+    height: auto;
+    padding-top: 5px;
+    margin-right: 15px
+}
+
+/* ===== Nav ===== */
+
+nav {
+    background-color: #f1f1f1;
+    position: sticky;
+    height: 100%;
+    top: 0;
+}
+
+nav label.nav-split{
+    font-size: 20px;
+    color: #000;
+    display: block;
+    position: relative;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-bottom: 1px solid #080808;
+}
+
+nav label.admin-actions i{
+    float: right;
+    margin-right: 5px;
+    color: #ccc;
+}
+
+nav label.admin-actions input:checked ~ i{
+    color: #2196F3;
+}
+
+nav .admin-actions{
+    font-size: 18px;
+    color: #000;
+    display: block;
+    position: relative;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-bottom: 1px solid #d8d6d6;
+}
+
+nav .admin-actions input {
+    position: relative;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    background-color: #ccc;
+}
+
+nav .checkbox-container{
+    font-size: 18px;
+    color: #000;
+    display: block;
+    position: relative;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-bottom: 1px solid #d8d6d6;
+}
+
+/* Hide the browser's default checkbox */
+nav .checkbox-container input {
+    position: relative;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+
+/* Create a custom checkbox */
+nav .checkmark {
+    position: absolute;
+    right: 15px;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+nav .checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+  
+/* When the checkbox is checked, add a blue background */
+nav .checkbox-container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Searchbar */
+.active-orange-4 input[type=text]:focus:not([readonly]) {
+    border: 1px solid orange;
+    box-shadow: 0 0 0 1px #f48fb1;
+}
+
+/* ===== Main ===== */
+main{
+    position: relative;
+}
+
+main h1{
+    font-size: 18px;
+    padding-top: 15px;
+}
+
+main h2{
+    font-size: 16px;
+}
+
+main h3{
+    font-size: 14px;
+}
+
+main img{
+    float: left;
+    padding: 15px;
+    height: 150px;
+    width: 150px;
+}
+
+main hr{
+    clear: left;
+}
+
+
+main .description{
+    width: 85%;
+} 
+
+/* for item list*/
+main section div.item-content{
+    width: 80%;
+    float: left;
+}
+
+
+main.form-add-item{
+    width: 100%;
+}
+
+input .name {
+    width: 500px;
+}
+
+input.editable{
+    display: block;
+    border: transparent;
+    background: inherit;
+} 
+
+.delete-button{
+    float: right;
+    margin-top: 5px;
+}
+
+/* ====== for form list ===== */
+
+#pad-form{
+    background-color: #f1f1f1;
+}
+
+#checkbox{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#imagepreviewele {
+    float: left;
+}
+
+#padleft{
+    padding-left: 7px !important;
+}
+
+#padright{
+    padding-right:7px !important;
+}
+
+
+
+/* hide form by default */
+main.form-view{
+    margin-top: 15px;
+    display:none;
+}
+
+main.transaction-view{
+    display:none;
+}
+
+main.form-view .form-group{
+    margin: 0 auto;
+    width: 600px;
+}
+
+
+/* Make textarea follow same styling as input elements that surround it */
+main textarea{
+    color: #495057;
+    background-color: inherit;
+    /* width: 250px;
+    height: 150px; */
+    border: 1px solid #c4ccd0;
+    border-radius: .25rem;
+    border: 1px solid #ced4da;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+main textarea::placeholder{
+    padding-left: 5px;
+}
+
+
+.image-preview{
+    height: 150px;
+    width: 150px;
+}
+
+
+/*------View Orders------*/
+.view-orders-header h1 {
+    font-size: 28px;
+    text-decoration: underline;
+}
+
+.ucid{
+    padding-bottom:10px;
+}
+
+.subtotal{
+    color: #d11717;
+}
+
+.checked-out{
+    padding-bottom: 15px;
+}
+
+.item-name{
+    text-decoration: underline;
+}
+/*------View New Orders------*/
+.order-info{
+    padding-top:15px;
+    padding-left: 25px;
+    border-bottom: 1px solid #9996a5;
+}
+
+/* div to right of order-info */
+.order-actions{
+    padding-top:15px;
+    border-bottom: 1px solid #9996a5;
+}
+
+
+/*-----View Completed Orders-----*/
+
+.trans-parent{
+    padding-top:15px;
+    padding-left: 15px;
+    border-bottom: 1px solid #d8d6d6;
+}
+
+
+
+
+
+/* ===== LOGIN MODAL ===== */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    text-align: center;
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    text-align: center;
+    align-self: center;
+    border: 1px solid #888;
+    width: 25%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* overwrite width for review cart modal*/
+#cart-modal-content{
+    width: 50%;
+}
+
+#row-total{
+    padding-left: 40px;
+}
+
+.modal .subtotal{
+    padding-top: 15px;
+    font-weight: 600;
+    color: #ad1010;
+}
+
+.modal input{
+    margin-right: 15px;
+    margin-left: 15px;
+    text-align: center;
+}
+
+/* Modal animation - slides from top while gaining opacity until its final position */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+
+/* Modal sections */
+.modal-body {
+    padding: 2px 16px;
+}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modalBoxTop{
+    background-image: linear-gradient(to left, #d11717, #e00e1f 35%, #dd152d 51%, #750d42);
+    font-size: 1.25em;
+    color: white;
+
+}
+
+.modal-box-top .header{
+    margin-bottom: 15px;
+}
